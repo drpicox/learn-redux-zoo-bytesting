@@ -114,7 +114,7 @@ describe('Animals', () => {
 
     });
 
-    describe('receiveAnimal', () => {
+    describe('breakOut', () => {
 
       const savio = { name: 'Savio', present: true };
       const lulu = { name: 'Lulu', present: true };
