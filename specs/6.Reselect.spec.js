@@ -294,24 +294,24 @@ describe("Reselect is used to create new selectors", () => {
     test("the isAbsent returns false if the animal with the name is not in the zoo", () => {
       const isAbsent = makeIsAbsent();
       const state = reduceDucks(undefined, {});
-      const count = isAbsent(state, { name: "Savio" });
-      expect(count).toBe(false);
+      const absent = isAbsent(state, { name: "Savio" });
+      expect(absent).toBe(false);
     });
 
-    test("the isAbsent returns true if the animal is present", () => {
+    test("the isAbsent returns false if the animal is present", () => {
       const isAbsent = makeIsAbsent();
       const state = reduceDucks(undefined, receiveAnimal("Savio"));
-      const count = isAbsent(state, { name: "Savio" });
-      expect(count).toBe(true);
+      const absent = isAbsent(state, { name: "Savio" });
+      expect(absent).toBe(false);
     });
 
-    test("the isAbsent returns false if the animal has escaped", () => {
+    test("the isAbsent returns true if the animal has escaped", () => {
       const isAbsent = makeIsAbsent();
       const state0 = undefined;
       const state1 = reduceDucks(state0, receiveAnimal("Savio"));
       const state2 = reduceDucks(state1, breakOut("Savio"));
-      const count = isAbsent(state2, { name: "Savio" });
-      expect(count).toBe(false);
+      const absent = isAbsent(state2, { name: "Savio" });
+      expect(absent).toBe(true);
     });
 
     test(`because this computation functions are slow to compute, use 
